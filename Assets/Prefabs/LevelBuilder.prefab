@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3945218047290074789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3945218047290074791}
+  - component: {fileID: 3945218047290074790}
+  m_Layer: 0
+  m_Name: LevelBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3945218047290074791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945218047290074789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3945218047290074790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945218047290074789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ea3a94001ff774bae558709a244bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GenerateLevel: 1
+  textureNoise: 1
+  maps:
+  - {fileID: 2800000, guid: 45cdd496452a72c4c842144b353bb707, type: 3}
+  - {fileID: 2800000, guid: f58ddd650457df44f806b53d4177e6b9, type: 3}
+  - {fileID: 2800000, guid: b7efefa2784b6534488826b940bf2d37, type: 3}
+  - {fileID: 2800000, guid: 52c11ecdfe79c0a4087c31bd6c15a359, type: 3}
+  - {fileID: 2800000, guid: a7a131234b0f9794b9543b18e1ca8aa8, type: 3}
+  - {fileID: 2800000, guid: 0c1a30a831b971044a539faf33175b90, type: 3}
+  - {fileID: 2800000, guid: 0752e7ebd460c0e4783ba42b8927f19d, type: 3}
+  - {fileID: 2800000, guid: 912daa5f8fd92c3489ad321bc2844504, type: 3}
+  - {fileID: 2800000, guid: baff87c976bf6ef4487603b16bc8494c, type: 3}
+  - {fileID: 2800000, guid: 52ba1d23571beeb4b92eabb377cd8c95, type: 3}
+  resolution: 32
+  blockSize: {x: 25, y: 10, z: 25}
+  blockOffset: {x: 35, y: 35}
+  minFloor: 4
+  maxFloor: 15
+  fillAmount: 0.75
+  Base:
+  - {fileID: 7648974555299723313, guid: 831eb7d636553594bb62d6b3bf67955a, type: 3}
+  - {fileID: 2386871591538334400, guid: 358cd7d25e3fa934494fb23db4efd52c, type: 3}
+  Top:
+  - {fileID: 9079098857253942125, guid: baae68778bf6a34469f01c6f07bb55c1, type: 3}
+  - {fileID: 655596443749623677, guid: 8fa9554b123d7fd49a4a026cb9c943e0, type: 3}
+  clearLevel: 0
+  GeneratedBuildings: []
+  BuildingsCount: 0
