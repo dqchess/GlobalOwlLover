@@ -45,6 +45,8 @@ namespace MFlight.Demo
 
         private Animator anim;
         private float timer = 0f;
+
+        private ParticleSystem[] ps_wing;
         private void Awake()
         {
             rigid = GetComponent<Rigidbody>();
@@ -53,6 +55,11 @@ namespace MFlight.Demo
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
 
             anim = GetComponentInChildren<Animator>();
+            ps_wing = GetComponentsInChildren<ParticleSystem>();
+            foreach(ParticleSystem ps in ps_wing)
+            {
+                ps.Stop();
+            }
         }
 
         private void Update()
@@ -99,6 +106,20 @@ namespace MFlight.Demo
                     anim.SetTrigger("Wing_Flap");
                 }
                 timer = 0f;
+            }
+            if(anim.GetBool("Piqued") && ps_wing[0].isStopped)
+            {
+                foreach (ParticleSystem ps in ps_wing)
+                {
+                    ps.Play();
+                }
+            }
+            if(!anim.GetBool("Piqued") && ps_wing[0].isPlaying)
+            {
+                foreach (ParticleSystem ps in ps_wing)
+                {
+                    ps.Stop();
+                }
             }
         }
 
