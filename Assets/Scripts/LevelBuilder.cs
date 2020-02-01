@@ -8,7 +8,7 @@ public class LevelBuilder : MonoBehaviour
 
     public bool textureNoise;
 
-    public Texture2D map;
+    public List <Texture2D> maps;
 
     public int resolution;
     public Vector3 blockSize;
@@ -34,7 +34,8 @@ public class LevelBuilder : MonoBehaviour
         if(GenerateLevel)
         {
             BuildingsCount=0;
-            BuildLevel();
+            BuildLevel(maps[Random.Range(0,maps.Count)]);
+            GenerateLevel=false;
         }
     }
 
@@ -43,7 +44,7 @@ public class LevelBuilder : MonoBehaviour
 
    
 
-	void BuildLevel()
+	void BuildLevel(Texture2D map)
 	{
 		for (int x = 0; x < map.width; x++)
 		{
@@ -55,7 +56,7 @@ public class LevelBuilder : MonoBehaviour
                 {
                 int randomColor =Random.Range(0,Base.Count);
 
-				   StartCoroutine(GenerateTile(x,y,randomColor));
+				   StartCoroutine(GenerateTile(x,y,randomColor,map));
                    BuildingsCount++;
                 }
 			}
@@ -64,7 +65,7 @@ public class LevelBuilder : MonoBehaviour
  
 	}
 
-	IEnumerator GenerateTile (int x, int z, int colorIndex)
+	IEnumerator GenerateTile (int x, int z, int colorIndex,Texture2D map)
 	{
 		Color pixelColor = map.GetPixel(x, z);
 
@@ -121,6 +122,8 @@ public class LevelBuilder : MonoBehaviour
         }	
 	}
 
+    
+
     void Update()
     {
         if(clearLevel)
@@ -129,10 +132,16 @@ public class LevelBuilder : MonoBehaviour
             {
                 foreach(GameObject building in GeneratedBuildings)
                 {
-                    DestroyImmediate(building);
+                    Destroy(building);
                 }
                 clearLevel=false;
             }
+        }
+        if(GenerateLevel)
+        {
+            BuildingsCount=0;
+            BuildLevel(maps[Random.Range(0,maps.Count)]);
+            GenerateLevel=false;
         }    
     }
 	

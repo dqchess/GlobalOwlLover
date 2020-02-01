@@ -36,12 +36,12 @@ public class BombThrower : MonoBehaviour
         timerBomb += Time.deltaTime;
         timerEyeLaser += Time.deltaTime;
         timerBigLaser += Time.deltaTime;
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot())
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(hud.mousePos.position);
 
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Input.GetKeyDown(KeyCode.Mouse0)&& CanShoot())
+        {
             if (Physics.Raycast(ray, out hit))
             {
                 Shoot(hit.point);
@@ -117,5 +117,12 @@ public class BombThrower : MonoBehaviour
                 output = false;
         }
         return output;
+    }
+    
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        Gizmos.DrawRay(hud.mousePos.position, direction);
     }
 }

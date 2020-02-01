@@ -11,15 +11,15 @@ public class Bomb : MonoBehaviour
     public float explosionRadius = 20f;
     public float explosionForce = 100000f;
     public float speed = 100f;
-    IEnumerator Start()
+    void Start()
     {
-        yield return new WaitForEndOfFrame();
-        //transform.DOMove(target,2f).OnComplete(() => SetExplosion());
+        target = (transform.position - target).normalized;
     }
 
     void Update()
     {
-        this.gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position,target,speed * Time.deltaTime);
+        //this.gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position,target,speed * Time.deltaTime);
+        transform.position += -target * Time.deltaTime * speed;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -66,14 +66,12 @@ public class Bomb : MonoBehaviour
                             childRb.constraints = RigidbodyConstraints.None;
                             childRb.useGravity = true;
                             childRb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0f);
+                            
                         }
                     }
 
                     b.isDeconstruct = true;
-                }
-                             
-                
-
+                }                             
             }
         }
     }

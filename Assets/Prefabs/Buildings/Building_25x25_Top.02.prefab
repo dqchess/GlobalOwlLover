@@ -107,9 +107,10 @@ GameObject:
   - component: {fileID: 1506755227592468006}
   - component: {fileID: 7446813609684666358}
   - component: {fileID: 608016362482973299}
+  - component: {fileID: 1534254991925695538}
   - component: {fileID: 2540834770869016124}
   - component: {fileID: 3399158346720008704}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Building_25x25_Top.01_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +178,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1534254991925695538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911617306935211454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0de93007e1015449d7845f4063fcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeChangeLayer: 5
+  numberSavedPositions: 3
+  delaySave: 3
+  timerReconstruction: 5
 --- !u!54 &2540834770869016124
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -217,9 +234,10 @@ GameObject:
   - component: {fileID: 3573448408268444968}
   - component: {fileID: 2466591508568811861}
   - component: {fileID: 6629411648125091222}
+  - component: {fileID: 7351701246728009545}
   - component: {fileID: 93840303826523320}
   - component: {fileID: 609906990070076564}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Building_25x25_Top.01_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,6 +305,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &7351701246728009545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739752469857054782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0de93007e1015449d7845f4063fcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeChangeLayer: 5
+  numberSavedPositions: 3
+  delaySave: 3
+  timerReconstruction: 5
 --- !u!54 &93840303826523320
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -327,9 +361,10 @@ GameObject:
   - component: {fileID: 1811347509494895601}
   - component: {fileID: 933163679708241420}
   - component: {fileID: 5397692509779150077}
+  - component: {fileID: 5164509636272222885}
   - component: {fileID: 3803212501789428086}
   - component: {fileID: 7130842837854215491}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Building_25x25_Top.01_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,6 +432,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5164509636272222885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781565388104241800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0de93007e1015449d7845f4063fcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeChangeLayer: 5
+  numberSavedPositions: 3
+  delaySave: 3
+  timerReconstruction: 5
 --- !u!54 &3803212501789428086
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -437,9 +488,10 @@ GameObject:
   - component: {fileID: 5883786368921473377}
   - component: {fileID: 3218279167642738387}
   - component: {fileID: 6141443716791447124}
+  - component: {fileID: 1810697880663746291}
   - component: {fileID: 2554587988047509858}
   - component: {fileID: 98403437434322668}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Building_25x25_Top.01_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,6 +559,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1810697880663746291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545728670634969875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0de93007e1015449d7845f4063fcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeChangeLayer: 5
+  numberSavedPositions: 3
+  delaySave: 3
+  timerReconstruction: 5
 --- !u!54 &2554587988047509858
 Rigidbody:
   m_ObjectHideFlags: 0
