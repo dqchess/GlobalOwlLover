@@ -61,9 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9927c5a5f14574fb3da7124daee338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: -329.53036, y: 21.740942, z: -49.904182}
+  target: {x: -82.5, y: 62.565742, z: -215.02185}
   explosionRadius: 50
-  explosionForce: 20000
+  explosionForce: 0
 --- !u!1 &6348391670490347870
 GameObject:
   m_ObjectHideFlags: 0

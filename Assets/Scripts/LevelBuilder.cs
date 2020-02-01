@@ -6,6 +6,8 @@ public class LevelBuilder : MonoBehaviour
 {
     public bool GenerateLevel;
 
+    public bool textureNoise;
+
     public Texture2D map;
 
     public int resolution;
@@ -66,7 +68,21 @@ public class LevelBuilder : MonoBehaviour
 	{
 		Color pixelColor = map.GetPixel(x, z);
 
-        int randomFloor = Random.Range(minFloor,maxFloor);
+        float h,s,v;
+        
+        Color.RGBToHSV(pixelColor,out h,out s,out v);
+
+        int randomFloor;
+        if(textureNoise)
+        {
+            randomFloor = (int)Mathf.Lerp(minFloor,maxFloor, v);
+        }
+        else
+        {
+            randomFloor = Random.Range(minFloor,maxFloor);
+        }
+        
+        
 
 		if (pixelColor == Color.black)
 		{
