@@ -43,16 +43,21 @@ namespace MFlight.Demo
         private bool rollOverride = false;
         private bool pitchOverride = false;
 
+        private Animator anim;
+        private float timer = 0f;
         private void Awake()
         {
             rigid = GetComponent<Rigidbody>();
 
             if (controller == null)
                 Debug.LogError(name + ": Plane - Missing reference to MouseFlightController!");
+
+            anim = GetComponentInChildren<Animator>();
         }
 
         private void Update()
         {
+            timer += Time.deltaTime;
             // When the player commands their own stick input, it should override what the
             // autopilot is trying to do.
             rollOverride = false;
@@ -82,6 +87,19 @@ namespace MFlight.Demo
             yaw = autoYaw;
             pitch = (pitchOverride) ? keyboardPitch : autoPitch;
             roll = (rollOverride) ? keyboardRoll : autoRoll;
+            
+            anim.SetFloat("Roll", roll);
+            anim.SetFloat("Speed", Mathf.Clamp01(rigid.velocity.magnitude));
+            anim.SetBool("Piqued", transform.forward.y < -0.5f ? true : false);
+            //Some chance of flapping wings every 3 seconds when flying
+            if(!anim.GetBool("Piqued") && timer>3f)
+            {
+                if(Random.Range(0f,1f)<.7f)
+                {
+                    anim.SetTrigger("Wing_Flap");
+                }
+                timer = 0f;
+            }
         }
 
         private void RunAutopilot(Vector3 flyTarget, out float yaw, out float pitch, out float roll)

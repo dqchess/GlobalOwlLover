@@ -7,6 +7,12 @@ public class BombThrower : MonoBehaviour
     public GameObject bomb;
     public GameObject bombSpawner;
 
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -17,6 +23,7 @@ public class BombThrower : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 SpawnBomb(hit.point);
+                anim.SetTrigger("Shoot");
             }
         }
     }
