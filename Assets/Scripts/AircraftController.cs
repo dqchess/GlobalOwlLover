@@ -30,15 +30,13 @@ public class AircraftController : MonoBehaviour {
             1.0f
         );
         controlForce = controlForce.normalized * forwardThrustForce;
-
-        Debug.Log(controlForce);
     }
 
     void FixedUpdate()
     {
         // Apply the braking force to apply to limit the maximum speed.
         float excessSpeed = Math.Max(0, rigidBody.velocity.magnitude - maxSpeed);        
-        Vector3 brakeForce = rigidBody.velocity.normalized * excessSpeed;    
+        Vector3 brakeForce = rigidBody.velocity.normalized * excessSpeed;
         rigidBody.AddForce(-brakeForce, ForceMode.Impulse);   
 
         // Apply the control force to move the aircraft in the desired direction.
