@@ -14,7 +14,7 @@ namespace MFlight.Demo
 
         [Header("HUD Elements")]
         [SerializeField] private RectTransform boresight = null;
-        [SerializeField] private RectTransform mousePos = null;
+        [SerializeField] public RectTransform mousePos = null;
 
         private Camera playerCam = null;
 

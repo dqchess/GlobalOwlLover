@@ -43,7 +43,7 @@ public class LevelBuilder : MonoBehaviour
 
    
 
-	void BuildLevel ()
+	void BuildLevel()
 	{
 		for (int x = 0; x < map.width; x++)
 		{
@@ -91,11 +91,10 @@ public class LevelBuilder : MonoBehaviour
 		}
         else
         {
-              
+            GameObject building = new GameObject();
             for(int i = 0; i<=randomFloor; i++)
             {
-
-
+                //top
                 if(i==randomFloor)
                 {
                     Vector3 rot = new Vector3(0,rotations[Random.Range(0,rotations.Length)]);
@@ -103,23 +102,22 @@ public class LevelBuilder : MonoBehaviour
                     
                     GameObject topBuilding = Instantiate(Top[colorIndex],pos,Quaternion.Euler(rot));
 
-
                     GeneratedBuildings.Add(topBuilding);
-
+                    topBuilding.transform.SetParent(building.transform);
                 }
+                //building
                 else
                 {
                     Vector3 rot = new Vector3(0,rotations[Random.Range(0,rotations.Length)]);
                     Vector3 pos = new Vector3(x*(blockSize.x+blockOffset.x)-(resolution*(blockSize.x+blockOffset.x)/2),i*blockSize.y,z*(blockSize.z+blockOffset.y)-(resolution*(blockSize.z+blockOffset.y)/2));
                     GameObject middleBuilding = Instantiate(Base[colorIndex],pos,Quaternion.Euler(rot));
                     GeneratedBuildings.Add(middleBuilding);
-                }
-                
-                
-                yield return null;
-                
+                    middleBuilding.transform.SetParent(building.transform);
+                }                  
             }
+            building.AddComponent<Building>();
 
+            yield return null;
         }	
 	}
 

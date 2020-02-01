@@ -437,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bomb: {fileID: 366043668257079873, guid: d4e70209dfba871418ee5684b8b9c10f, type: 3}
   bombSpawner: {fileID: 2893040715691388475}
+  hud: {fileID: 0}
 --- !u!114 &2893040715343656637
 MonoBehaviour:
   m_ObjectHideFlags: 0
