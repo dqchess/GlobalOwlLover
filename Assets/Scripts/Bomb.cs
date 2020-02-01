@@ -7,15 +7,30 @@ using DG.Tweening;
 public class Bomb : MonoBehaviour
 {
     [HideInInspector] public Vector3 target;
+    public GameObject particleExplosion;
     public float explosionRadius = 20f;
     public float explosionForce = 100000f;
+    public float speed = 100f;
     IEnumerator Start()
     {
         yield return new WaitForEndOfFrame();
-        transform.DOMove(target,2f).OnComplete(() => SetExplosion());
+        //transform.DOMove(target,2f).OnComplete(() => SetExplosion());
     }
 
     void Update()
+    {
+        this.gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position,target,speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        Instantiate(particleExplosion, transform.position, Quaternion.identity, null);
+        SetExplosion();            
+        Destroy(this.gameObject);
+
+    }
+    private void OnTriggerEnter(Collider other)
     {
         
     }
@@ -24,35 +39,42 @@ public class Bomb : MonoBehaviour
     {
         Vector3 explosionPos = transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
-        //Debug.Log(colliders.Length);
         foreach (Collider hit in colliders)
         {
-            if(hit.isTrigger)
-            {
-                hit.GetComponent<MeshRenderer>().enabled=false;
-                
-                for(int i = 0; i< hit.transform.childCount;i++)
+            //la bombe a touché un building ?
+            Building b = hit.gameObject.transform.parent?.GetComponent<Building>();
+            if (b != null)
+            {               
+                if (!b.isDeconstruct)
                 {
-                    hit.transform.GetChild(i).gameObject.SetActive(true);
-                }
-                Rigidbody[] rbs = hit.GetComponentsInChildren<Rigidbody>();
-                
-                
-                
-                foreach(Rigidbody childRb in rbs)
-                {                    
-                    childRb.constraints =RigidbodyConstraints.None;
-                    childRb.useGravity =true;
-                    childRb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0f);
+                    //pour chaque étage
+                    for (int i = 0; i < hit.gameObject.transform.parent.childCount; i++)
+                    {
+                        Transform etage = hit.gameObject.transform.parent.GetChild(i);
+                        etage.GetComponent<MeshRenderer>().enabled = false;
+                        etage.GetComponent<Collider>().enabled = false;
 
+                        //chaque petit morceau
+                        for (int j = 0; j < etage.transform.childCount; j++)
+                        {
+                            etage.transform.GetChild(j).gameObject.SetActive(true);
+                        }
+                        Rigidbody[] rbs = etage.GetComponentsInChildren<Rigidbody>();
+
+                        foreach (Rigidbody childRb in rbs)
+                        {
+                            childRb.constraints = RigidbodyConstraints.None;
+                            childRb.useGravity = true;
+                            childRb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0f);
+                        }
+                    }
+
+                    b.isDeconstruct = true;
                 }
+                             
+                
 
             }
-
-            //Rigidbody rb = hit.GetComponent<Rigidbody>();
-
-            //if (rb != null)
-             //   rb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0f);
         }
     }
 }
