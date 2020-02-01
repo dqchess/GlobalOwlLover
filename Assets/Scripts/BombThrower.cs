@@ -13,6 +13,9 @@ public class BombThrower : MonoBehaviour
     public GameObject eyeLasers;
     public GameObject bigLaser;
 
+    public Transform eyeL;
+    public Transform eyeR;
+
     public float altitude;
     public float palier1 = 150f;
     public float palier2 = 250f;
@@ -49,7 +52,7 @@ public class BombThrower : MonoBehaviour
             }
         }
     }
-
+    /*
     private void SpawnBomb(Vector3 p)
     {
         Instantiate(bomb, transform.position,Quaternion.identity,null);
@@ -64,22 +67,22 @@ public class BombThrower : MonoBehaviour
     {
         Instantiate(bomb, transform.position, Quaternion.identity, null);
         bomb.GetComponent<Bomb>().target = p;
-    }
+    }*/
     private void Shoot(Vector3 p)
     {
        if(altitude<palier1)
         {
             //Shoot big laser
-            Instantiate(bomb, transform.position, Quaternion.identity, null);
-            bomb.GetComponent<Bomb>().target = p;
+            Instantiate(bigLaser, transform.position, Quaternion.identity, null);
             timerBigLaser = 0;
             Debug.Log("BigLaser");
         }
        else if(altitude<palier2)
         {
             //Shoot eye laser
-            Instantiate(bomb, transform.position, Quaternion.identity, null);
-            bomb.GetComponent<Bomb>().target = p;
+            Instantiate(eyeLasers, eyeL.position, Quaternion.identity, null);
+            Instantiate(eyeLasers, eyeR.position, Quaternion.identity, null);
+            eyeLasers.GetComponent<EyeLaser>().target = p;
             timerEyeLaser = 0;
             Debug.Log("EyeLaser");
         }
