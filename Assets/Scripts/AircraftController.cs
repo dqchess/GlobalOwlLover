@@ -26,7 +26,7 @@ public class AircraftController : MonoBehaviour {
         // The forward (z) component is always applied to keep the aircraft moving forward.
         controlForce.Set(
             Input.GetAxis("Horizontal") * turnForceMultiplier, 
-            Input.GetAxis("Vertical") * turnForceMultiplier, 
+            -Input.GetAxis("Vertical") * turnForceMultiplier, 
             1.0f
         );
         controlForce = controlForce.normalized * forwardThrustForce;

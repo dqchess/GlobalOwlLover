@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 3cb0c69de45087f41a81de3f40da6724
+guid: 988bffad4e7ffab49baa83f7960fd7cb
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Building_Base.01
+    second: {fileID: 2100000, guid: 610bbd48799789f41b4dc5bdd03bab4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Building_Color.01
+    second: {fileID: 2100000, guid: d6b554f97f3510e4982cb92c6ab34db8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Building_Top.01
+    second: {fileID: 2100000, guid: 3d4a3f23bb10ddc4abdc99d21313aefb, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
