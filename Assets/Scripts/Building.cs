@@ -5,19 +5,29 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public bool isDeconstruct = false;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void Reconstruct()
     {
-        
-    }
+        if (!isDeconstruct)
+            return;
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
+            transform.GetChild(i).GetComponent<Collider>().enabled = true;
 
-    public void Deconstruct()
-    {
+            for (int j = 0; j < transform.GetChild(i).transform.childCount; j++)
+            {
+                transform.GetChild(i).transform.GetChild(j).gameObject.SetActive(false);
+            }
 
+            Rigidbody[] rbs = transform.GetChild(i).GetComponentsInChildren<Rigidbody>();
+
+            foreach (Rigidbody childRb in rbs)
+            {
+                childRb.constraints = RigidbodyConstraints.FreezeAll;
+                childRb.useGravity = false;
+                childRb.gameObject.SetActive(false);
+            }
+        }
     }
 }

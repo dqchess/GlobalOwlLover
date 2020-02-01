@@ -16,11 +16,11 @@ public class BombThrower : MonoBehaviour
     }
     void Update()
     {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(hud.mousePos.position);
-
             if (Physics.Raycast(ray, out hit))
             {
                 SpawnBomb(hit.point);
@@ -33,5 +33,12 @@ public class BombThrower : MonoBehaviour
     {
         Instantiate(bomb, transform.position,Quaternion.identity,null);
         bomb.GetComponent<Bomb>().target = p;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        Gizmos.DrawRay(hud.mousePos.position, direction);
     }
 }
