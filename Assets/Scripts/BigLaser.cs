@@ -5,15 +5,16 @@ using UnityEngine;
 public class BigLaser : MonoBehaviour
 {
     LineRenderer laser;
-    ParticleSystem ps;
+    public ParticleSystem ps_start;
     public Transform spawner;
+    public ParticleSystem ps_impact;
 
     float timer = 0f;
     public float laserDuration = 5f;
     // Start is called before the first frame update
     void Start()
     {
-        ps = GetComponent<ParticleSystem>();
+       
         laser = GetComponentInChildren<LineRenderer>();
         StartCoroutine(StartLaser());
     }
@@ -29,7 +30,9 @@ public class BigLaser : MonoBehaviour
         if(Physics.Raycast(ray, out hit))
         {
             laser.enabled = true;
-            laser.SetPosition(1, ray.direction*100f);
+            laser.SetPosition(1, ray.direction*Vector3.Distance(spawner.position, hit.point));
+            ps_impact.transform.position = hit.point+hit.normal;
+            ps_impact.transform.LookAt(ps_impact.transform.position + hit.normal);
         }
         else
         {
