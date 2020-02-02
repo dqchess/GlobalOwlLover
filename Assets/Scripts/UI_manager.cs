@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class UI_manager : MonoBehaviour
 {
     public BombThrower owl_stuff;
-    public Slider altitudeSlider;
-    public Image sliderHandle;
+    public Animator altimetreAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,23 +16,8 @@ public class UI_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        altitudeSlider.value = RemapClamp(owl_stuff.altitude, 0, 400, 0, 1);
-        if(owl_stuff.altitude<owl_stuff.palier1)
-        {
-            //Red
-            sliderHandle.color = Color.red;
-        }
-        else if(owl_stuff.altitude<owl_stuff.palier2)
-        {
-            //yellow
-            sliderHandle.color = Color.yellow;
-        }
-        else
-        {
-            //white
-            sliderHandle.color = Color.white;
-        }
-
+        altimetreAnim.SetFloat("Alt", RemapClamp(owl_stuff.altitude, 0, 400, 0, 1));
+        
     }
 
 
