@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 //[ExecuteInEditMode]
 public class LevelBuilder : MonoBehaviour
@@ -60,8 +61,6 @@ public class LevelBuilder : MonoBehaviour
 
     
 
-   
-
 	void BuildLevel(Texture2D map)
 	{
 		for (int x = 0; x < map.width; x++)
@@ -80,7 +79,6 @@ public class LevelBuilder : MonoBehaviour
 			}
 		}
         GenerateLevel=false;
- 
 	}
 
 	IEnumerator GenerateTile (int x, int z, int colorIndex,Texture2D map)
@@ -144,6 +142,13 @@ public class LevelBuilder : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GeneratedBuildings.Clear();
+            buildingCount = 0;
+            buildingDestroyed = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
         chaosText.text = Mathf.RoundToInt((buildingDestroyed / buildingCount * 100)).ToString() + " % of chaos";
         Debug.Log(buildingDestroyed);
