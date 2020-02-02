@@ -16,17 +16,14 @@ public class EyeLaser : MonoBehaviour
 
     void Update()
     {
-        //this.gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position,target,speed * Time.deltaTime);
         transform.position += -target * Time.deltaTime * speed;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-
         Instantiate(particleExplosion, transform.position, Quaternion.identity, null);
         SetExplosion();
         Destroy(this.gameObject);
-
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -67,7 +64,7 @@ public class EyeLaser : MonoBehaviour
 
                         }
                     }
-
+                    LevelBuilder.Instance.buildingDestroyed++;
                     b.isDeconstruct = true;
                 }
             }

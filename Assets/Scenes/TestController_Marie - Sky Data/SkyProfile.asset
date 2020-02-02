@@ -71,7 +71,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.54044116, g: 0.59208924, b: 0.61764705, a: 1}
+          color: {r: 1, g: 1, b: 1, a: 1}
         m_Name: Cloud Color 1
         m_Id: 2c135b0f-0207-43ae-8ba8-e1bbe2a25c70
       - keyframes:
@@ -79,7 +79,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          color: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
+          color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
         m_Name: Cloud Color 2
         m_Id: 2504a86a-a902-4f97-82bf-395231ae07c2
       - keyframes:
@@ -413,7 +413,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.911
+          value: 0.554
         m_Name: Cloud Density
         m_Id: 57d22e1d-2ec5-4f24-bac6-235f8630e7e6
         minValue: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.18
+          value: 0
         m_Name: Cloud Direction
         m_Id: 58f9b61b-70b5-4af4-bbc5-d0fcb4d7c6a5
         minValue: 0
@@ -443,7 +443,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.7
+          value: 0
         m_Name: Cloud Height
         m_Id: dd76783e-79c0-4d34-9fb7-39bb1f94a9ae
         minValue: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.962
+          value: 0.89
         m_Name: Cloud Fade-Out Distance
         m_Id: 2d57e070-3b47-4f6f-b937-29fdde788bcc
         minValue: 0
@@ -1073,7 +1073,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.55
+          value: 1
         m_Name: Cloud Texture Tiling
         m_Id: be7140d0-acf9-4986-a185-679dea22e31c
         minValue: 0.1
@@ -1779,7 +1779,7 @@ MonoBehaviour:
     - CubemapCloudFeature
     - CubemapNormalCloudFeature
     - MobileQualityFeature
-    m_Values: 01000100000000000000000000000100000000000000000001010001010101010000010001
+    m_Values: 01000101000000000000000000000100000000000000000001010001010101010000000001
   lightningArtSet: {fileID: 11400000, guid: fcd26c6d0379bd1498f9fbfeaf211979, type: 2}
   rainSplashArtSet: {fileID: 11400000, guid: bc520d172250ae746bd6c81b2ca80510, type: 2}
   starLayer1DataTexture: {fileID: 2800000, guid: 69aa5e34bd9a66a43b72f471a0aabd86,

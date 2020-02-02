@@ -98,6 +98,7 @@ MonoBehaviour:
   numberSavedPositions: 3
   delaySave: 3
   timerReconstruction: 5
+  delayBeforeReconstruction: 0
 --- !u!54 &6311211100536778098
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,7 +126,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 12.5
+  m_Radius: 4.6
   m_Center: {x: 0.3504448, y: -0.12226564, z: -1.7462397}
 --- !u!1 &4655741920716228248
 GameObject:
@@ -225,6 +226,7 @@ MonoBehaviour:
   numberSavedPositions: 3
   delaySave: 3
   timerReconstruction: 5
+  delayBeforeReconstruction: 0
 --- !u!54 &4621234924669230438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -252,7 +254,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7.552512
+  m_Radius: 4.6
   m_Center: {x: -2.734052, y: 0.2702322, z: 0.0031747818}
 --- !u!1 &5972858771631121454
 GameObject:
@@ -352,6 +354,7 @@ MonoBehaviour:
   numberSavedPositions: 3
   delaySave: 3
   timerReconstruction: 5
+  delayBeforeReconstruction: 0
 --- !u!54 &8478930582779445416
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -379,7 +382,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.107011
+  m_Radius: 4.6
   m_Center: {x: -0.55045414, y: 0.07142854, z: 0.2916975}
 --- !u!1 &7953701075061481902
 GameObject:
@@ -479,6 +482,7 @@ MonoBehaviour:
   numberSavedPositions: 3
   delaySave: 3
   timerReconstruction: 5
+  delayBeforeReconstruction: 0
 --- !u!54 &6315329740474008108
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -506,7 +510,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 9.973019
+  m_Radius: 4.6
   m_Center: {x: 0.039957523, y: 0.1718731, z: 1.7099581}
 --- !u!1 &9079098857253942125
 GameObject:
@@ -520,7 +524,7 @@ GameObject:
   - component: {fileID: 3962938051358849864}
   - component: {fileID: 7332887420936161201}
   - component: {fileID: 4611398466081132700}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Building_25x25_Top.01
   m_TagString: Building
   m_Icon: {fileID: 0}

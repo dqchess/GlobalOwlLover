@@ -69,7 +69,7 @@ public class Bomb : MonoBehaviour
                             
                         }
                     }
-
+                    LevelBuilder.Instance.buildingDestroyed++;
                     b.isDeconstruct = true;
                 }                             
             }

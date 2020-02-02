@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 //[ExecuteInEditMode]
 public class LevelBuilder : MonoBehaviour
 {
@@ -23,23 +24,40 @@ public class LevelBuilder : MonoBehaviour
     public bool clearLevel;
     public List<GameObject> GeneratedBuildings;
 
-    public int BuildingsCount;
+    public float buildingCount;
+    public float buildingDestroyed;
 
     private  float[] rotations =new float[4] {0,90,180,-90};
 
-    
+    public Text chaosText;
+    public Text destroyedBuildingText;
+
+    public static LevelBuilder Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     void Start()
     {
         if(GenerateLevel)
         {
-            BuildingsCount=0;
+            buildingCount=0;
             BuildLevel(maps[Random.Range(0,maps.Count)]);
             GenerateLevel=false;
         }
     }
 
-   
     
 
    
@@ -57,7 +75,7 @@ public class LevelBuilder : MonoBehaviour
                 int randomColor =Random.Range(0,Base.Count);
 
 				   StartCoroutine(GenerateTile(x,y,randomColor,map));
-                   BuildingsCount++;
+                   buildingCount++;
                 }
 			}
 		}
@@ -126,6 +144,12 @@ public class LevelBuilder : MonoBehaviour
 
     void Update()
     {
+
+        chaosText.text = Mathf.RoundToInt((buildingDestroyed / buildingCount * 100)).ToString() + " % of chaos";
+        Debug.Log(buildingDestroyed);
+        Debug.Log(buildingCount);
+        destroyedBuildingText.text = buildingDestroyed.ToString() + " destroyed buildings";
+
         if(clearLevel)
         {
              if(GeneratedBuildings.Count > 0)
@@ -139,7 +163,7 @@ public class LevelBuilder : MonoBehaviour
         }
         if(GenerateLevel)
         {
-            BuildingsCount=0;
+            buildingCount=0;
             BuildLevel(maps[Random.Range(0,maps.Count)]);
             GenerateLevel=false;
         }    

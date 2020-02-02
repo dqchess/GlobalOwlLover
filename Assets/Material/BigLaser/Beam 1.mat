@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Beam
+  m_Name: Beam 1
   m_Shader: {fileID: 4800000, guid: 1985783ef6795e8489363310010cbedd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
@@ -34,4 +34,4 @@ Material:
     m_Floats:
     - __dirty: 0
     m_Colors:
-    - _Color0: {r: 2, g: 0.017433979, b: 0, a: 1}
+    - _Color0: {r: 0, g: 2, b: 0.197268, a: 1}

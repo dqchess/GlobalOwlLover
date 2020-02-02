@@ -10,6 +10,7 @@ public class Building : MonoBehaviour
     {
         if (!isDeconstruct)
             return;
+        isDeconstruct = false;
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             transform.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
@@ -27,7 +28,10 @@ public class Building : MonoBehaviour
                 childRb.constraints = RigidbodyConstraints.FreezeAll;
                 childRb.useGravity = false;
                 childRb.gameObject.SetActive(false);
+                childRb.gameObject.layer = 0;
             }
         }
+
+        LevelBuilder.Instance.buildingDestroyed--;
     }
 }
