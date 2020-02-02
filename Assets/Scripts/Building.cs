@@ -31,5 +31,7 @@ public class Building : MonoBehaviour
                 childRb.gameObject.layer = 0;
             }
         }
+
+        LevelBuilder.Instance.buildingDestroyed--;
     }
 }

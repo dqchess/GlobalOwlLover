@@ -64,7 +64,7 @@ public class EyeLaser : MonoBehaviour
 
                         }
                     }
-
+                    LevelBuilder.Instance.buildingDestroyed++;
                     b.isDeconstruct = true;
                 }
             }

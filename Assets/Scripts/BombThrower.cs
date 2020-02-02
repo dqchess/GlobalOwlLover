@@ -121,29 +121,47 @@ public class BombThrower : MonoBehaviour
 
     private void Shoot(Vector3 p)
     {
-       if(indexWeapon == 2) //big laser
+        Camera.main.transform.parent.DOShakePosition(5f, 0.5f, 5, 90);
+        if (indexWeapon == 2) //big laser
        {
             bl = Instantiate(bigLaser, Vector3.zero, Quaternion.identity, null);
             bl.GetComponent<BigLaser>().owltransform = bombSpawner;
-            timerBigLaser = 0;
-            Debug.Log("BigLaser");
+            bl.GetComponent<BigLaser>().owl = gameObject;
+            timerBigLaser = 0;           
        }
        else if(indexWeapon == 1) //eye laser
        {
-            Instantiate(eyeLasers, eyeL.position, Quaternion.identity, transform);
-            Instantiate(eyeLasers, eyeR.position, Quaternion.identity, transform);
-            eyeLasers.GetComponent<EyeLaser>().target = p;
+            StartCoroutine(EyeLaserSalve(p));
+            
             timerEyeLaser = 0;
-            Debug.Log("EyeLaser");
        }
        else if(indexWeapon == 0) //bomb
        {
             Instantiate(bomb, transform.position, Quaternion.identity, null);
             bomb.GetComponent<Bomb>().target = p;
             timerBomb = 0;
-            Debug.Log("Bomb");
         }
     }
+
+    IEnumerator EyeLaserSalve(Vector3 p)
+    {
+        Instantiate(eyeLasers, eyeL.position, Quaternion.identity, transform);
+        Instantiate(eyeLasers, eyeR.position, Quaternion.identity, transform);
+        eyeLasers.GetComponent<EyeLaser>().target = p;
+
+        yield return new WaitForSeconds(0.1f);
+
+        Instantiate(eyeLasers, eyeL.position, Quaternion.identity, transform);
+        Instantiate(eyeLasers, eyeR.position, Quaternion.identity, transform);
+        eyeLasers.GetComponent<EyeLaser>().target = p;
+
+        yield return new WaitForSeconds(0.1f);
+
+        Instantiate(eyeLasers, eyeL.position, Quaternion.identity, transform);
+        Instantiate(eyeLasers, eyeR.position, Quaternion.identity, transform);
+        eyeLasers.GetComponent<EyeLaser>().target = p;
+    }
+    
     bool CanShoot()
     {
         bool output;

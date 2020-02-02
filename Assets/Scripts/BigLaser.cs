@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class BigLaser : MonoBehaviour
     ParticleSystem ps;
 
     public GameObject owltransform;
+    public GameObject owl;
 
     public float explosionRadius = 20f;
     public float explosionForce = 300f;
@@ -31,6 +33,8 @@ public class BigLaser : MonoBehaviour
             ps.Play();
             ps.transform.position = hit.point;
             SetExplosion(hit.point);
+            //owl.transform.parent.transform.DOShakePosition(0.2f, 0.5f, 2, 90);
+            //Camera.main.transform.parent.DOShakePosition(0.2f, 0.2f, 2, 90);
         }
         else
         {
@@ -71,7 +75,7 @@ public class BigLaser : MonoBehaviour
 
                         }
                     }
-
+                    LevelBuilder.Instance.buildingDestroyed++;
                     b.isDeconstruct = true;
                 }
             }
