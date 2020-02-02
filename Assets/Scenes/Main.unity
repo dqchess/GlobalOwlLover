@@ -222,6 +222,16 @@ PrefabInstance:
       propertyPath: _fogAreaSortingMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6819322263784885675, guid: 7920c308692b36c4bb5a65d2dca87b86,
+        type: 3}
+      propertyPath: _stepping
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819322263784885675, guid: 7920c308692b36c4bb5a65d2dca87b86,
+        type: 3}
+      propertyPath: _steppingNear
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6860554682785509585, guid: 7920c308692b36c4bb5a65d2dca87b86,
         type: 3}
       propertyPath: m_Name
@@ -11024,7 +11034,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1779424137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2838e0cbd5a124a0ab52bbe6b14c5ac0, type: 3}
+  m_Script: {fileID: 11500000, guid: 89f7a9dff312e44e5abe7eda9ffd31dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1779424140
@@ -11034,7 +11044,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779424137}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e3d446f7ff644b70a8daaa5525fcf56, type: 3}
   m_Name: 
@@ -11060,7 +11070,7 @@ MonoBehaviour:
   _computeDepth: 0
   _computeDepthScope: 0
   _transparencyCutOff: 0.1
-  _renderBeforeTransparent: 0
+  _renderBeforeTransparent: 1
   _sun: {fileID: 0}
   _timeBetweenTextureUpdates: 0.2
   _sunCopyColor: 1
