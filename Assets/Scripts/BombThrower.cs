@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MFlight.Demo;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class BombThrower : MonoBehaviour
 {
@@ -19,31 +21,56 @@ public class BombThrower : MonoBehaviour
     public float altitude;
     public float palier1 = 150f;
     public float palier2 = 250f;
+    public float palierMax = 500f;
+
+    public int indexWeapon = 0;
 
     float timerBomb = 0f;
     float timerEyeLaser = 0f;
     float timerBigLaser = 0f;
 
-    public float cooldownBomb = 3f;
+    public float cooldownBomb = 1f;
     public float cooldownEyeLaser = 3f;
     public float cooldownBigLaser = 7f;
-    
+
+    public Text textBomb;
+    public Text textEyeLaser;
+    public Text textBigLaser;
+
+    private GameObject bl;
+
 
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+
     }
     void Update()
     {
+        UpdateUI();
         altitude = transform.position.y;
         timerBomb += Time.deltaTime;
         timerEyeLaser += Time.deltaTime;
         timerBigLaser += Time.deltaTime;
 
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        {
+            indexWeapon++;
+            if (indexWeapon > 2)
+                indexWeapon = 0;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+        {
+            indexWeapon--;
+            if (indexWeapon < 0)
+                indexWeapon = 2;
+        }
+
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)&& CanShoot())
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (Physics.Raycast(ray, out hit))
             {
@@ -51,44 +78,66 @@ public class BombThrower : MonoBehaviour
                 anim.SetTrigger("Shoot");
             }
         }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            if (bl != null)
+                Destroy(bl);
+        }
     }
-    /*
-    private void SpawnBomb(Vector3 p)
+
+    public void UpdateUI()
     {
-        Instantiate(bomb, transform.position,Quaternion.identity,null);
-        bomb.GetComponent<Bomb>().target = p;
+        Color cLessAlpha = new Color(255, 255, 255, 0.5f);
+        Color c = new Color(255, 255, 255, 255);
+        switch (indexWeapon)
+        {
+            case (0):
+                textBomb.transform.DOScale(Vector3.one * 1.2f, 0.3f);
+                textBomb.DOColor(c, 0f);
+                textEyeLaser.transform.DOScale(Vector3.one, 0.3f);
+                textEyeLaser.DOColor(cLessAlpha, 0f);
+                textBigLaser.transform.DOScale(Vector3.one, 0.3f);
+                textBigLaser.DOColor(cLessAlpha, 0f);
+                break;
+            case (1):
+                textBomb.transform.DOScale(Vector3.one, 0.3f);
+                textBomb.DOColor(cLessAlpha, 0f);
+                textEyeLaser.transform.DOScale(Vector3.one * 1.2f, 0.3f);
+                textEyeLaser.DOColor(c, 0f);
+                textBigLaser.transform.DOScale(Vector3.one, 0.3f);
+                textBigLaser.DOColor(cLessAlpha, 0f);
+                break;
+            case (2):
+                textBomb.transform.DOScale(Vector3.one, 0.3f);
+                textBomb.DOColor(cLessAlpha, 0f);
+                textEyeLaser.transform.DOScale(Vector3.one, 0.3f);
+                textEyeLaser.DOColor(cLessAlpha, 0f);
+                textBigLaser.transform.DOScale(Vector3.one * 1.2f, 0.3f);
+                textBigLaser.DOColor(c, 0f);
+                break;
+        }
     }
-    private void SpawnEyeLaser(Vector3 p)
-    {
-        Instantiate(bomb, transform.position, Quaternion.identity, null);
-        bomb.GetComponent<Bomb>().target = p;
-    }
-    private void SpawnBigLaser(Vector3 p)
-    {
-        Instantiate(bomb, transform.position, Quaternion.identity, null);
-        bomb.GetComponent<Bomb>().target = p;
-    }*/
+
     private void Shoot(Vector3 p)
     {
-       if(altitude<palier1)
-        {
-            //Shoot big laser
-            Instantiate(bigLaser, transform.position, Quaternion.identity, null);
+       if(indexWeapon == 2) //big laser
+       {
+            bl = Instantiate(bigLaser, Vector3.zero, Quaternion.identity, null);
+            bl.GetComponent<BigLaser>().owltransform = bombSpawner;
             timerBigLaser = 0;
             Debug.Log("BigLaser");
-        }
-       else if(altitude<palier2)
-        {
-            //Shoot eye laser
-            Instantiate(eyeLasers, eyeL.position, Quaternion.identity, null);
-            Instantiate(eyeLasers, eyeR.position, Quaternion.identity, null);
+       }
+       else if(indexWeapon == 1) //eye laser
+       {
+            Instantiate(eyeLasers, eyeL.position, Quaternion.identity, transform);
+            Instantiate(eyeLasers, eyeR.position, Quaternion.identity, transform);
             eyeLasers.GetComponent<EyeLaser>().target = p;
             timerEyeLaser = 0;
             Debug.Log("EyeLaser");
-        }
-       else
-        {
-            //Shoot bomb
+       }
+       else if(indexWeapon == 0) //bomb
+       {
             Instantiate(bomb, transform.position, Quaternion.identity, null);
             bomb.GetComponent<Bomb>().target = p;
             timerBomb = 0;

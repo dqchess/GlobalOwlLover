@@ -1556,12 +1556,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9927c5a5f14574fb3da7124daee338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 70.078835, y: 140.63869, z: 287.82867}
+  target: {x: -12.500011, y: 38.509895, z: -393.58472}
   particleExplosion: {fileID: 8273364737658768076, guid: 54d8e46fbd02c264ea28b4e25ad2823d,
     type: 3}
   explosionRadius: 50
-  explosionForce: 200
-  speed: 1000
+  explosionForce: 100
+  speed: 800
 --- !u!135 &8267329459991719632
 SphereCollider:
   m_ObjectHideFlags: 0
