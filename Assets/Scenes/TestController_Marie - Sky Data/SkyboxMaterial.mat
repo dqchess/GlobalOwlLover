@@ -99,8 +99,8 @@ Material:
     - _CloudTextureTiling: 1
     - _DebugPointRadius: 0.03
     - _DebugPointsCount: 0
-    - _GradientFadeBegin: -0.487
-    - _GradientFadeEnd: 0.14899999
+    - _GradientFadeBegin: -0.437
+    - _GradientFadeEnd: 0.6129999
     - _GradientFadeMiddlePosition: 0.5
     - _HorizonFogDensity: 0.007
     - _HorizonFogLength: 0.134

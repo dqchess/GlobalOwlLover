@@ -363,7 +363,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: -0.487
+          value: -0.437
         m_Name: Horizon Position
         m_Id: 0d215a4b-f845-4855-b7b7-26d3b1f78953
         minValue: -1
@@ -373,7 +373,7 @@ MonoBehaviour:
           m_Time: 0
           m_InterpolationCurve: 0
           m_InterpolationDirection: 0
-          value: 0.636
+          value: 1.05
         m_Name: Sky Gradient Length
         m_Id: 404d6edd-0cb2-4f7f-9b62-fef6389aca17
         minValue: 0
