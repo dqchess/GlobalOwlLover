@@ -73,24 +73,26 @@ public class BombThrower : MonoBehaviour
        if(altitude<palier1)
         {
             //Shoot big laser
-            Instantiate(bigLaser, transform.position, Quaternion.identity, null);
+            GameObject g = GameObject.Instantiate(bigLaser, transform.position, Quaternion.identity, null);
+            g.GetComponent<BigLaser>().spawner = bombSpawner.transform;
             timerBigLaser = 0;
             Debug.Log("BigLaser");
         }
        else if(altitude<palier2)
         {
             //Shoot eye laser
-            Instantiate(eyeLasers, eyeL.position, Quaternion.identity, null);
-            Instantiate(eyeLasers, eyeR.position, Quaternion.identity, null);
-            eyeLasers.GetComponent<EyeLaser>().target = p;
+            GameObject g = GameObject.Instantiate(eyeLasers, eyeL.position, Quaternion.identity, null);
+            GameObject h = GameObject.Instantiate(eyeLasers, eyeR.position, Quaternion.identity, null);
+            g.GetComponent<EyeLaser>().target = p;
+            h.GetComponent<EyeLaser>().target = p;
             timerEyeLaser = 0;
             Debug.Log("EyeLaser");
         }
        else
         {
             //Shoot bomb
-            Instantiate(bomb, transform.position, Quaternion.identity, null);
-            bomb.GetComponent<Bomb>().target = p;
+            GameObject g = GameObject.Instantiate(bomb, transform.position, Quaternion.identity, null);
+            g.GetComponent<Bomb>().target = p;
             timerBomb = 0;
             Debug.Log("Bomb");
         }
