@@ -31,6 +31,7 @@ public class BombThrowerV2 : MonoBehaviour
     public float cooldownEyeLaser = 3f;
     public float cooldownBigLaser = 7f;
 
+    public Canvas MainCanvas;
     public Text textBomb;
     public Text textEyeLaser;
     public Text textBigLaser;
@@ -119,7 +120,14 @@ public class BombThrowerV2 : MonoBehaviour
 
     private void Shoot(Vector3 p)
     {
-        Camera.main.transform.parent.DOShakePosition(5f, 0.5f, 5, 90);
+
+        //Camera.main.transform.DOShakePosition(2f, 0.5f, 5, 90,true);
+
+        /*foreach(RectTransform rT in MainCanvas.transform.GetComponentsInChildren<RectTransform>())
+        {
+            rT.DOShakePosition(2f,1f, 5, 90,true);
+        }*/
+  
         if (indexWeapon == 2) //big laser
        {
             bl = Instantiate(bigLaser, Vector3.zero, Quaternion.identity, null);
@@ -135,7 +143,7 @@ public class BombThrowerV2 : MonoBehaviour
        }
        else if(indexWeapon == 0) //bomb
        {
-            Instantiate(bomb, transform.position, Quaternion.identity, null);
+            Instantiate(bomb, transform.position+Vector3.down*2f, Quaternion.identity, null);
             bomb.GetComponent<Bomb>().target = p;
             timerBomb = 0;
         }
